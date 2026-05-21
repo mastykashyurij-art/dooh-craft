@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dooh Craft — Cerveja do Trigo</title>
+    <meta name="description" content="Dooh Craft. Handcrafted wheat beer brewed for those who demand more. Est. 2004." />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+
+    <!-- SCROLL PROGRESS -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- BACKGROUND VIDEO -->
+    <video class="video-bg" autoplay muted loop playsinline aria-hidden="true">
+      <source src="BACKBEERVIDEO.mp4" type="video/mp4" />
+    </video>
+    <div class="watermark-cover"></div>
+
+    <!-- CINEMATIC VIGNETTE OVERLAY -->
+    <div class="vignette"></div>
+
+    <!-- PAGE CONTENT -->
+    <div class="page-shell">
+
+      <!-- HEADER -->
+      <header class="site-header" id="siteHeader">
+        <a href="#home" class="brand">
+          <span class="brand-main">Dooh Craft</span>
+          <span class="brand-sub">Est. 2004</span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="site-nav" id="siteNav" aria-label="Main navigation">
+          <a href="#story">Story</a>
+          <a href="#beers">Selection</a>
+          <a href="#craft">The Craft</a>
+          <a href="#recipe">Recipe</a>
+          <a href="#contact">Find Us</a>
+        </nav>
+        <a href="#contact" class="btn btn-primary header-cta">Order Now</a>
+      </header>
+
+      <main>
+
+        <!-- HERO -->
+        <section class="hero" id="home" aria-label="Hero">
+          <div class="hero-inner scroll-fade">
+            <span class="eyebrow">Cerveja do Trigo &middot; Kraków</span>
+            <h1>Brewed for<br>those who<br>demand more.</h1>
+            <p class="hero-sub">
+              Dooh Craft Wheat Beer — crafted from premium hops and sun-dried wheat grain.
+              A golden pour with soul since 2004.
+            </p>
+            <div class="hero-actions">
+              <a href="#beers" class="btn btn-primary">Explore the Beers</a>
+              <a href="#story" class="btn btn-ghost">Our Story</a>
+            </div>
+          </div>
+
+          <div class="scroll-hint" aria-hidden="true">
+            <span>Scroll</span>
+            <svg width="14" height="22" viewBox="0 0 14 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="1" y="1" width="12" height="20" rx="6" stroke="currentColor" stroke-width="1.5"/>
+              <circle class="scroll-dot" cx="7" cy="6" r="2" fill="currentColor"/>
+            </svg>
+          </div>
+        </section>
+
+        <!-- STORY -->
+        <section class="section section-story" id="story">
+          <div class="glass-panel scroll-fade">
+            <div class="section-col">
+              <span class="section-label">Our Story</span>
+              <h2>Born from a love of<br>wheat and wild craft.</h2>
+              <p class="section-body">
+                In 2004, a small brewery in Kraków set out to prove that wheat beer could be bold,
+                complex, and utterly unforgettable. Two decades later, Dooh Craft remains
+                independent, handcrafted, and obsessively consistent.
+              </p>
+            </div>
+            <div class="stat-grid">
+              <div class="stat-item">
+                <strong>2004</strong>
+                <span>Founded</span>
+              </div>
+              <div class="stat-item">
+                <strong>100%</strong>
+                <span>Independent</span>
+              </div>
+              <div class="stat-item">
+                <strong>18+</strong>
+                <span>Awards Won</span>
+              </div>
+              <div class="stat-item">
+                <strong>3</strong>
+                <span>Tap Houses</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- BEERS -->
+        <section class="section section-beers" id="beers">
+          <div class="beers-header scroll-fade">
+            <span class="section-label">Selection</span>
+            <h2>The lineup.</h2>
+          </div>
+          <div class="beers-grid">
+            <article class="beer-card glass-card scroll-fade" data-preview="3DBEERPIC1.png" data-preview-speed="0.7s">
+              <div class="beer-card-top">
+                <h3>Cerveja do Trigo</h3>
+                <span class="beer-badge">Flagship</span>
+              </div>
+              <p>Golden wheat, citrus zest, and soft carbonation. The original Dooh Craft pour — bright, clean, iconic.</p>
+              <div class="beer-meta-row">
+                <span class="beer-tag">5.2% ABV</span>
+                <span class="beer-tag">IBU 18</span>
+                <span class="beer-tag">Wheat</span>
+              </div>
+            </article>
+            <article class="beer-card glass-card scroll-fade" data-preview="3DBEERPIC2.png" data-preview-speed="0.7s">
+              <div class="beer-card-top">
+                <h3>Amber Export</h3>
+                <span class="beer-badge">Classic</span>
+              </div>
+              <p>Rich malt backbone, caramel sweetness, and a smooth biscuit finish. A round after a long day.</p>
+              <div class="beer-meta-row">
+                <span class="beer-tag">5.8% ABV</span>
+                <span class="beer-tag">IBU 24</span>
+                <span class="beer-tag">Amber</span>
+              </div>
+            </article>
+            <article class="beer-card glass-card scroll-fade" data-preview="3DBEERPIC3.png" data-preview-speed="0.7s">
+              <div class="beer-card-top">
+                <h3>Hazy Mosaic IPA</h3>
+                <span class="beer-badge">Limited</span>
+              </div>
+              <p>Juicy tropical aromas, stone fruit, and a lingering dry bitterness. Unfiltered and unapologetic.</p>
+              <div class="beer-meta-row">
+                <span class="beer-tag">6.7% ABV</span>
+                <span class="beer-tag">IBU 52</span>
+                <span class="beer-tag">Hazy IPA</span>
+              </div>
+            </article>
+            <article class="beer-card glass-card scroll-fade" data-preview="3DBEERPIC4.png" data-preview-speed="0.7s">
+              <div class="beer-card-top">
+                <h3>Smoked Porter</h3>
+                <span class="beer-badge">Seasonal</span>
+              </div>
+              <p>Toasted grain, cocoa, and a whisper of wood smoke. The bold side of Dooh Craft.</p>
+              <div class="beer-meta-row">
+                <span class="beer-tag">7.2% ABV</span>
+                <span class="beer-tag">IBU 30</span>
+                <span class="beer-tag">Dark</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- CRAFT -->
+        <section class="section section-craft" id="craft">
+          <div class="craft-header scroll-fade">
+            <span class="section-label">The Craft</span>
+            <h2>Every pour tells<br>the process.</h2>
+          </div>
+          <div class="craft-grid">
+            <article class="craft-card glass-card scroll-fade">
+              <div class="craft-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                  <path d="M8 12h8M12 8v8"/>
+                </svg>
+              </div>
+              <h3>Premium Wheat Grain</h3>
+              <p>Sun-dried Bavarian wheat malt sourced from family farms — the backbone of every Dooh Craft brew.</p>
+            </article>
+            <article class="craft-card glass-card scroll-fade">
+              <div class="craft-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+              </div>
+              <h3>Wild Hop Selection</h3>
+              <p>A curated blend of Czech Saaz and Pacific hops — delivering citrus, pine, and that unmistakable bitterness.</p>
+            </article>
+            <article class="craft-card glass-card scroll-fade">
+              <div class="craft-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="3"/>
+                  <path d="M3 12h3M18 12h3M12 3v3M12 18v3"/>
+                </svg>
+              </div>
+              <h3>Open Fermentation</h3>
+              <p>Traditional open-tank fermentation at low temperatures for 21 days. No shortcuts. No compromises.</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- RECIPE -->
+        <section class="section section-recipe" id="recipe">
+          <div class="craft-header scroll-fade">
+            <span class="section-label">The Recipe</span>
+            <h2>Inside the<br>Cerveja do Trigo.</h2>
+            <p class="section-body">
+              Two decades of refinement distilled into one wheat beer. This is the
+              house recipe behind our flagship — built on patience, balance, and
+              a 50% raw-wheat backbone.
+            </p>
+          </div>
+
+          <div class="craft-grid">
+            <article class="craft-card glass-card scroll-fade">
+              <div class="craft-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 22V12M5 12V4M5 12h9a3 3 0 0 0 0-6H8M19 22v-8a3 3 0 0 0-3-3"/>
+                </svg>
+              </div>
+              <h3>The Grain Bill</h3>
+              <p>
+                50% malted wheat, 45% Pilsner malt, 5% flaked oats for body.
+                Mashed at 65&deg;C for 60 minutes to coax a soft, bready malt
+                character with a dry, crisp finish.
+              </p>
+              <div class="beer-meta-row">
+                <span class="beer-tag">Wheat 50%</span>
+                <span class="beer-tag">Pilsner 45%</span>
+                <span class="beer-tag">Oats 5%</span>
+              </div>
+            </article>
+
+            <article class="craft-card glass-card scroll-fade">
+              <div class="craft-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2s4 4 4 9a4 4 0 0 1-8 0c0-5 4-9 4-9zM12 22v-7"/>
+                </svg>
+              </div>
+              <h3>Hops &amp; Bittering</h3>
+              <p>
+                A gentle 18 IBU. Czech Saaz at 60 minutes for a clean bitter
+                spine, then a late Hallertau Mittelfr&uuml;h addition at flame-out
+                for soft floral and lemon-zest aromatics.
+              </p>
+              <div class="beer-meta-row">
+                <span class="beer-tag">Saaz</span>
+                <span class="beer-tag">Hallertau</span>
+                <span class="beer-tag">18 IBU</span>
+              </div>
+            </article>
+
+            <article class="craft-card glass-card scroll-fade">
+              <div class="craft-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9"/>
+                  <path d="M12 7v5l3 2"/>
+                </svg>
+              </div>
+              <h3>Yeast &amp; Fermentation</h3>
+              <p>
+                Bavarian wheat yeast pitched at 18&deg;C, free-rising to 21&deg;C
+                over an open 21-day primary. This is where the signature banana
+                and clove esters bloom — never rushed, never filtered.
+              </p>
+              <div class="beer-meta-row">
+                <span class="beer-tag">Weizen yeast</span>
+                <span class="beer-tag">21 days</span>
+                <span class="beer-tag">5.2% ABV</span>
+              </div>
+            </article>
+          </div>
+
+          <div class="beers-header scroll-fade">
+            <p class="section-body">
+              Conditioned cold for two weeks, then naturally carbonated.
+              Best poured at 6&deg;C into a tall weizen glass — one smooth
+              motion, leaving the yeast for a final swirl. Na zdrowie.
+            </p>
+          </div>
+        </section>
+
+        <!-- CTA STRIP -->
+        <section class="section-cta">
+          <div class="cta-panel glass-panel scroll-fade">
+            <div>
+              <span class="section-label">Taprooms</span>
+              <h2>Find Dooh Craft<br>near you.</h2>
+              <p class="section-body">Three tap houses in Kraków. Walk in, pull up a stool, and let the beer do the talking.</p>
+            </div>
+            <div class="cta-actions">
+              <a href="#contact" class="btn btn-primary">Find a Taproom</a>
+              <a href="mailto:hello@doohcraft.pl" class="btn btn-ghost">Wholesale &amp; Trade</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="section section-contact" id="contact">
+          <div class="contact-grid">
+            <div class="contact-info scroll-fade">
+              <span class="section-label">Visit Us</span>
+              <h2>Pour yourself<br>a seat.</h2>
+              <p>ul. Floriańska 21, Kazimierz, Kraków<br />Open daily 4 PM – 1 AM</p>
+            </div>
+            <div class="contact-details scroll-fade">
+              <a href="mailto:hello@doohcraft.pl" class="contact-row contact-row-link" aria-label="Email hello@doohcraft.pl">
+                <span class="contact-label">Email</span>
+                <span class="contact-link">hello@doohcraft.pl</span>
+              </a>
+              <a href="tel:+48123456789" class="contact-row contact-row-link" aria-label="Call +48 123 456 789">
+                <span class="contact-label">Phone</span>
+                <span class="contact-link">+48 123 456 789</span>
+              </a>
+              <div class="contact-row">
+                <span class="contact-label">Hours</span>
+                <span class="contact-link">Mon–Sun, 4 PM – 1 AM</span>
+              </div>
+              <div class="contact-actions">
+                <a href="mailto:hello@doohcraft.pl" class="btn btn-primary">Get in Touch</a>
+                <a href="tel:+48123456789" class="btn btn-ghost">Call Us</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- FOOTER -->
+      <footer class="site-footer">
+        <div class="footer-inner">
+          <span class="footer-brand">Dooh Craft</span>
+          <p>Cerveja do Trigo &middot; Est. 2004 &middot; Kraków, Poland</p>
+          <p class="footer-legal">Drink responsibly. Must be 18+ to consume alcohol.</p>
+        </div>
+      </footer>
+
+    </div><!-- /.page-shell -->
+
+<div class="beer-preview" id="beerPreview" aria-hidden="true">
+      <img src="" alt="" id="beerPreviewImg" />
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
