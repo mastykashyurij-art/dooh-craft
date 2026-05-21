@@ -912,8 +912,12 @@ a.contact-link:hover {
   }
   .cta-actions { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
 
-  /* hide hover image preview on tablet and below */
-  .beer-preview { display: none !important; }
+  /* tablet: smaller preview, still on right */
+  .beer-preview {
+    display: block;
+    width: min(260px, 38vw);
+    right: 2%;
+  }
 }
 
 /* ─── TABLET / MOBILE NAV ─────────────────────────────────── */
@@ -1059,8 +1063,14 @@ a.contact-link:hover {
   /* ── Scroll hint ── */
   .scroll-hint { display: none; }
 
-  /* ── Beer preview: always hidden on mobile ── */
-  .beer-preview { display: none !important; }
+  /* ── Beer preview: small right-side float on mobile ── */
+  .beer-preview {
+    display: block;
+    width: min(155px, 38vw);
+    right: 2%;
+    top: 50%;
+    z-index: 200;
+  }
 }
 
 @media (max-width: 480px) {
