@@ -276,24 +276,11 @@ main .cta-actions {
 .brand:hover .brand-sub { letter-spacing: 0.30em; }
 
 .nav-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  padding: 6px;
+  display: none; /* shown via media query */
+  background: none;
+  border: none;
+  cursor: pointer;
 }
-
-.nav-toggle span {
-  width: 22px;
-  height: 1.5px;
-  background: var(--text);
-  border-radius: 999px;
-  display: block;
-  transition: transform 0.25s var(--ease-out), opacity 0.25s ease;
-}
-
-.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
 .site-nav {
   display: flex;
@@ -914,7 +901,7 @@ a.contact-link:hover {
 
   .section-story .glass-panel { grid-template-columns: 1fr; gap: 48px; }
   .craft-grid { grid-template-columns: 1fr; gap: 16px; }
-  .beers-grid { grid-template-columns: 1fr; }
+  .beers-grid { grid-template-columns: repeat(2, 1fr); }
   .contact-grid { grid-template-columns: 1fr; gap: 48px; }
 
   .glass-panel { padding: 44px 40px; }
@@ -924,54 +911,162 @@ a.contact-link:hover {
     align-items: flex-start;
   }
   .cta-actions { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+
+  /* hide hover image preview on tablet and below */
+  .beer-preview { display: none !important; }
 }
 
+/* ─── TABLET / MOBILE NAV ─────────────────────────────────── */
 @media (max-width: 768px) {
-  .page-shell { padding: 0 20px; }
+  .page-shell { padding: 0 18px; }
+  main { width: 100%; }
 
-  .nav-toggle { display: flex; }
-
-  .site-nav {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    flex-direction: column;
+  /* ── Hamburger toggle button ── */
+  .nav-toggle {
+    display: flex;
+    position: relative;
+    z-index: 110;           /* always above the nav overlay */
+    width: 44px;
+    height: 44px;
+    align-items: center;
     justify-content: center;
-    gap: 32px;
-    background: rgba(7, 6, 10, 0.98);
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-8px);
-    transition: opacity 0.25s ease, transform 0.25s var(--ease-out);
-    z-index: 99;
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 10px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
   }
 
-  .site-nav.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .nav-toggle:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.28);
+  }
 
-  .site-nav a { font-size: 1.1rem; letter-spacing: 0.18em; }
+  .nav-toggle span {
+    width: 22px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 999px;
+    display: block;
+    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), opacity 0.2s ease, width 0.3s ease;
+  }
+
+  /* X animation */
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; width: 0; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+  /* ── Full-screen nav overlay ── */
+  .site-nav {
+    position: fixed;
+    inset: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    background: rgba(4, 3, 8, 0.96);
+    backdrop-filter: blur(28px) saturate(160%);
+    -webkit-backdrop-filter: blur(28px) saturate(160%);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-12px) scale(0.98);
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    z-index: 105;
+  }
+
+  .site-nav.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+  }
+
+  /* Stagger nav links */
+  .site-nav a {
+    font-size: clamp(1.4rem, 5vw, 2rem);
+    letter-spacing: 0.14em;
+    padding: 18px 40px;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.3s ease, transform 0.3s ease, color 0.2s ease;
+  }
+
+  .site-nav a:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+
+  .site-nav.open a {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .site-nav.open a:nth-child(1) { transition-delay: 0.05s; }
+  .site-nav.open a:nth-child(2) { transition-delay: 0.10s; }
+  .site-nav.open a:nth-child(3) { transition-delay: 0.15s; }
+  .site-nav.open a:nth-child(4) { transition-delay: 0.20s; }
+  .site-nav.open a:nth-child(5) { transition-delay: 0.25s; }
+
+  .site-nav a::after { display: none; }
+  .site-nav a:hover { transform: none; text-shadow: 0 0 24px rgba(232,168,32,0.6); }
 
   .header-cta { display: none; }
 
-  .hero h1 { font-size: clamp(2.4rem, 8vw, 3.6rem); }
-  .hero-sub { font-size: 0.98rem; }
+  /* ── Hero ── */
+  .hero { min-height: 100svh; padding: 100px 0 80px; }
+  .hero h1 { font-size: clamp(2.6rem, 9vw, 4rem); line-height: 1.1; }
+  .hero-sub { font-size: 1rem; }
+  .hero-actions { flex-direction: column; gap: 12px; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
 
-  .section { padding: 80px 0; }
+  /* ── Sections ── */
+  .section { padding: 72px 0; }
+  .glass-panel { padding: 32px 20px; }
+  .section-story .glass-panel { gap: 36px; }
 
-  .glass-panel { padding: 32px 24px; }
-  .stat-grid { grid-template-columns: 1fr 1fr; }
-  .stat-item { padding: 24px 20px; }
-  .stat-item strong { font-size: 1.8rem; }
+  /* ── Stats ── */
+  .stat-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .stat-item { padding: 20px 16px; }
+  .stat-item strong { font-size: 1.7rem; }
 
-  .beers-grid { grid-template-columns: 1fr; }
+  /* ── Beer cards ── */
+  .beers-grid { grid-template-columns: 1fr; gap: 14px; }
+  .beer-card { padding: 22px 18px; }
 
+  /* ── Craft / Recipe cards ── */
+  .craft-grid { grid-template-columns: 1fr; gap: 14px; }
+  .craft-card { padding: 22px 18px; }
+
+  /* ── CTA ── */
+  .section-cta { padding: 60px 0; }
+  .section-cta .glass-panel { flex-direction: column; gap: 32px; }
+  .cta-actions { flex-direction: column; width: 100%; }
+  .cta-actions .btn { width: 100%; justify-content: center; }
+
+  /* ── Contact ── */
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
   .contact-info h2 { margin-bottom: 12px; }
+  .contact-actions { flex-direction: column; }
+  .contact-actions .btn { width: 100%; justify-content: center; }
 
+  /* ── Footer ── */
   .site-footer { padding: 40px 0; }
+
+  /* ── Scroll hint ── */
+  .scroll-hint { display: none; }
+
+  /* ── Beer preview: always hidden on mobile ── */
+  .beer-preview { display: none !important; }
 }
 
 @media (max-width: 480px) {
-  .hero { padding-bottom: 60px; }
-  .scroll-hint { display: none; }
-  .hero-actions { flex-direction: column; }
-  .hero-actions .btn { width: 100%; justify-content: center; }
+  .page-shell { padding: 0 14px; }
+  .hero h1 { font-size: clamp(2.2rem, 10vw, 3.2rem); }
+  .section { padding: 56px 0; }
   .beers-grid { grid-template-columns: 1fr; }
+  .stat-grid { grid-template-columns: 1fr 1fr; }
 }
