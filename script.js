@@ -1,6 +1,22 @@
 (function () {
   'use strict';
 
+  // ── PRELOADER ──────────────────────────────────────────────
+  const preloader = document.getElementById('preloader');
+  if (preloader) {
+    const MIN_MS = 3900; // match animation duration
+    const t0 = Date.now();
+    function hidePreloader() {
+      const wait = Math.max(0, MIN_MS - (Date.now() - t0));
+      setTimeout(() => preloader.classList.add('hidden'), wait);
+    }
+    if (document.readyState === 'complete') {
+      hidePreloader();
+    } else {
+      window.addEventListener('load', hidePreloader, { once: true });
+    }
+  }
+
   const progressBar = document.getElementById('scrollProgress');
   const MIN_OPACITY = 0.0;
   const PLATEAU = 0.34;
