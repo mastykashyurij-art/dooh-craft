@@ -12,84 +12,134 @@
     <!-- PRELOADER -->
     <div class="preloader" id="preloader" aria-label="Loading" role="status">
       <div class="preloader-wrap">
-        <svg class="brew-scene" viewBox="0 0 260 295" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <svg class="brew-scene" viewBox="0 0 280 310" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <defs>
-            <clipPath id="glassClip">
-              <polygon points="118,62 133,258 187,258 202,62"/>
+            <!-- Mug interior clip -->
+            <clipPath id="mugClip">
+              <rect x="112" y="74" width="90" height="182" rx="2"/>
             </clipPath>
+            <!-- Beer gradient -->
             <linearGradient id="beerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%"   stop-color="#8a5500" stop-opacity="0.95"/>
-              <stop offset="45%"  stop-color="#d4870a" stop-opacity="1"/>
-              <stop offset="100%" stop-color="#8a5500" stop-opacity="0.95"/>
+              <stop offset="0%"   stop-color="#7a4800" stop-opacity="0.9"/>
+              <stop offset="40%"  stop-color="#d4870a" stop-opacity="1"/>
+              <stop offset="100%" stop-color="#7a4800" stop-opacity="0.9"/>
             </linearGradient>
+            <!-- Bottle gradient -->
             <linearGradient id="bottleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%"   stop-color="#1e0e04"/>
               <stop offset="40%"  stop-color="#4a2210"/>
               <stop offset="100%" stop-color="#1e0e04"/>
             </linearGradient>
+            <!-- Gold rim gradient -->
+            <linearGradient id="goldRim" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%"   stop-color="#f5d060"/>
+              <stop offset="50%"  stop-color="#c8860a"/>
+              <stop offset="100%" stop-color="#a06010"/>
+            </linearGradient>
+            <!-- Glass surface gradient (subtle sheen) -->
+            <linearGradient id="glassSurface" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%"   stop-color="rgba(255,255,255,0.18)"/>
+              <stop offset="18%"  stop-color="rgba(255,255,255,0.06)"/>
+              <stop offset="80%"  stop-color="rgba(255,255,255,0.03)"/>
+              <stop offset="100%" stop-color="rgba(255,255,255,0.14)"/>
+            </linearGradient>
           </defs>
 
-          <!-- ── BOTTLE GROUP (drawn upright, rotated via CSS) ── -->
+          <!-- ══ BOTTLE GROUP ══ -->
           <g class="bottle-g">
-            <!-- body -->
-            <rect x="52" y="100" width="32" height="108" rx="7" fill="url(#bottleGrad)"/>
-            <!-- shoulder -->
-            <path d="M52,100 Q52,78 64,68 L76,68 Q88,78 84,100 Z" fill="url(#bottleGrad)"/>
-            <!-- neck -->
-            <rect x="62" y="32" width="16" height="40" rx="4" fill="url(#bottleGrad)"/>
-            <!-- cap -->
-            <rect x="59" y="22" width="22" height="13" rx="3" fill="#c8860a"/>
-            <rect x="61" y="24" width="18" height="9"  rx="2" fill="#e8a020"/>
+            <rect x="46" y="96"  width="32" height="110" rx="7"  fill="url(#bottleGrad)"/>
+            <path d="M46,96 Q46,74 58,64 L78,64 Q90,74 78,96 Z"  fill="url(#bottleGrad)"/>
+            <rect x="57" y="28"  width="16" height="40"  rx="4"  fill="url(#bottleGrad)"/>
+            <rect x="54" y="18"  width="22" height="13"  rx="3"  fill="#b87800"/>
+            <rect x="56" y="20"  width="18" height="9"   rx="2"  fill="#e8a820"/>
             <!-- label -->
-            <rect x="54" y="118" width="28" height="44" rx="4" fill="#c8860a" opacity="0.8"/>
-            <text x="68" y="135" text-anchor="middle" font-size="5.5" font-weight="700" fill="#1a0800" font-family="serif">DOOH</text>
-            <text x="68" y="144" text-anchor="middle" font-size="4"   font-weight="600" fill="#1a0800" font-family="serif">CRAFT</text>
-            <rect x="56" y="150" width="24" height="1.5" fill="#1a0800" opacity="0.4"/>
-            <text x="68" y="158" text-anchor="middle" font-size="3.5" fill="#1a0800" font-family="serif">WHEAT BEER</text>
-            <!-- liquid visible through bottle -->
-            <rect x="53" y="101" width="30" height="106" rx="6" fill="#c8860a" opacity="0.25"/>
+            <rect x="48" y="114" width="28" height="46"  rx="4"  fill="#c8860a" opacity="0.82"/>
+            <text x="62" y="131" text-anchor="middle" font-size="5.5" font-weight="700" fill="#1a0800" font-family="serif">DOOH</text>
+            <text x="62" y="140" text-anchor="middle" font-size="4"   font-weight="600" fill="#1a0800" font-family="serif">CRAFT</text>
+            <rect x="50" y="146" width="24" height="1.2" fill="#1a0800" opacity="0.4"/>
+            <text x="62" y="154" text-anchor="middle" font-size="3.4" fill="#1a0800" font-family="serif">WHEAT BEER</text>
+            <rect x="47" y="97"  width="30" height="108" rx="6"  fill="#c8860a" opacity="0.2"/>
           </g>
 
-          <!-- ── POUR STREAM ── -->
+          <!-- ══ POUR STREAM ══ -->
           <path class="pour-stream"
-            d="M 105 58 C 112 62 116 64 118 64"
+            d="M 100 62 C 106 66 110 70 112 74"
             stroke="#c8860a" stroke-width="5" fill="none"
             stroke-linecap="round" opacity="0"/>
 
-          <!-- ── BEER FILL (clipped to glass) ── -->
-          <g clip-path="url(#glassClip)">
-            <rect class="beer-fill" x="118" y="62" width="84" height="196" fill="url(#beerGrad)"/>
-            <!-- inner shine -->
-            <rect class="beer-fill" x="120" y="62" width="6" height="196" fill="rgba(255,220,100,0.12)"/>
+          <!-- ══ BEER FILL (clipped to mug interior) ══ -->
+          <g clip-path="url(#mugClip)">
+            <rect class="beer-fill" x="112" y="74" width="90" height="182" fill="url(#beerGrad)"/>
+            <!-- inner left shine on beer surface -->
+            <rect class="beer-fill" x="114" y="74" width="5" height="182" fill="rgba(255,210,80,0.14)"/>
             <!-- bubbles -->
-            <circle class="bubble bub1" cx="145" cy="240" r="2.8" fill="rgba(255,220,80,0.55)"/>
-            <circle class="bubble bub2" cx="163" cy="250" r="2.0" fill="rgba(255,210,60,0.45)"/>
-            <circle class="bubble bub3" cx="175" cy="235" r="2.4" fill="rgba(255,220,80,0.50)"/>
-            <circle class="bubble bub4" cx="152" cy="245" r="1.6" fill="rgba(255,230,90,0.40)"/>
+            <circle class="bubble bub1" cx="140" cy="240" r="3.0" fill="rgba(255,220,80,0.55)"/>
+            <circle class="bubble bub2" cx="158" cy="250" r="2.1" fill="rgba(255,210,60,0.45)"/>
+            <circle class="bubble bub3" cx="172" cy="234" r="2.5" fill="rgba(255,220,80,0.50)"/>
+            <circle class="bubble bub4" cx="150" cy="244" r="1.7" fill="rgba(255,230,90,0.42)"/>
+            <circle class="bubble bub5" cx="165" cy="248" r="1.4" fill="rgba(255,215,70,0.38)"/>
           </g>
 
-          <!-- ── GLASS OUTLINE (on top so it looks like a real glass) ── -->
-          <polygon points="118,62 133,258 187,258 202,62"
-            fill="rgba(255,255,255,0.04)"
-            stroke="rgba(255,255,255,0.55)" stroke-width="2"/>
-          <!-- rim highlight -->
-          <rect x="117" y="57" width="86" height="7" rx="3.5"
-            fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/>
-          <!-- base -->
-          <rect x="126" y="258" width="68" height="9" rx="4.5"
-            fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
-          <!-- left shine -->
-          <line x1="124" y1="68" x2="134" y2="250"
-            stroke="rgba(255,255,255,0.18)" stroke-width="5" stroke-linecap="round"/>
+          <!-- ══ MUG BODY OUTLINE ══ -->
+          <!-- Back wall (slightly wider to show glass thickness) -->
+          <rect x="108" y="68" width="98" height="190" rx="4"
+            fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/>
+          <!-- Front wall -->
+          <rect x="112" y="68" width="90" height="190" rx="3"
+            fill="url(#glassSurface)" stroke="rgba(255,255,255,0.48)" stroke-width="1.8"/>
 
-          <!-- ── FOAM ── -->
+          <!-- ══ HANDLE (D-shape, right side) ══ -->
+          <!-- Handle outer path -->
+          <path d="M 200 105 C 248 105 248 218 200 218"
+            fill="none" stroke="rgba(255,255,255,0.40)" stroke-width="14"
+            stroke-linecap="round"/>
+          <!-- Handle inner lighter edge -->
+          <path d="M 200 105 C 248 105 248 218 200 218"
+            fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="8"
+            stroke-linecap="round"/>
+          <!-- Handle inner dark core -->
+          <path d="M 200 105 C 240 105 240 218 200 218"
+            fill="none" stroke="rgba(0,0,0,0.25)" stroke-width="4"
+            stroke-linecap="round"/>
+
+          <!-- ══ GOLD RIM ══ -->
+          <rect x="107" y="58" width="100" height="12" rx="4"
+            fill="url(#goldRim)" stroke="#f0c840" stroke-width="0.8" opacity="0.95"/>
+          <!-- Rim shine -->
+          <rect x="109" y="59" width="96" height="4" rx="2"
+            fill="rgba(255,240,140,0.45)"/>
+
+          <!-- ══ BASE RING ══ -->
+          <rect x="106" y="256" width="102" height="12" rx="5"
+            fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.38)" stroke-width="1.5"/>
+          <rect x="110" y="268" width="94" height="6" rx="3"
+            fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+
+          <!-- ══ GLASS SHEEN (left vertical highlight) ══ -->
+          <rect x="116" y="72" width="7" height="182" rx="3.5"
+            fill="rgba(255,255,255,0.16)"/>
+          <!-- right subtle highlight -->
+          <rect x="191" y="72" width="4" height="182" rx="2"
+            fill="rgba(255,255,255,0.09)"/>
+
+          <!-- ══ DOOH CRAFT LOGO ON MUG ══ -->
+          <text x="157" y="152" text-anchor="middle"
+            font-family="'Edwardian Script ITC','Segoe Script',cursive"
+            font-size="22" fill="rgba(212,175,55,0.72)"
+            class="mug-logo-text">Dooh Craft</text>
+          <text x="157" y="165" text-anchor="middle"
+            font-family="serif" font-size="7" font-weight="600"
+            letter-spacing="3" fill="rgba(212,175,55,0.50)">EST. 2004</text>
+
+          <!-- ══ FOAM ══ -->
           <g class="foam-layer">
-            <ellipse cx="142" cy="63" rx="13" ry="7.5" fill="rgba(255,252,240,0.93)"/>
-            <ellipse cx="160" cy="60" rx="15" ry="9"   fill="rgba(255,253,245,0.97)"/>
-            <ellipse cx="178" cy="63" rx="12" ry="7"   fill="rgba(255,252,240,0.91)"/>
-            <ellipse cx="151" cy="56" rx="10" ry="6"   fill="white" opacity="0.88"/>
-            <ellipse cx="169" cy="55" rx="9"  ry="5.5" fill="white" opacity="0.92"/>
-            <ellipse cx="160" cy="52" rx="7"  ry="4.5" fill="white" opacity="0.80"/>
+            <ellipse cx="133" cy="69" rx="12" ry="7"   fill="rgba(255,252,240,0.92)"/>
+            <ellipse cx="151" cy="66" rx="14" ry="8.5" fill="rgba(255,253,245,0.96)"/>
+            <ellipse cx="169" cy="68" rx="13" ry="7.5" fill="rgba(255,252,240,0.93)"/>
+            <ellipse cx="186" cy="70" rx="10" ry="6"   fill="rgba(255,252,240,0.88)"/>
+            <ellipse cx="142" cy="62" rx="10" ry="6"   fill="white" opacity="0.85"/>
+            <ellipse cx="160" cy="60" rx="11" ry="6.5" fill="white" opacity="0.90"/>
+            <ellipse cx="177" cy="62" rx="9"  ry="5.5" fill="white" opacity="0.87"/>
           </g>
         </svg>
 
